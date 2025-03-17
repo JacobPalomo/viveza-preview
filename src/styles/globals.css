@@ -1,0 +1,203 @@
+@import 'tailwindcss';
+
+@theme {
+	--color-background: #f5f7fa;
+	--color-primary: #2ca8df;
+	--color-secondary: #3a3a3a;
+	--color-tiaf: #bf9f6b;
+	--color-kinis: #db7d8b;
+	--color-casmi: #e02881;
+	--text-hero: clamp(2.25rem, 1.814rem + 2.182vw, 3.75rem) /* h2 */;
+	--text-title: clamp(2rem, 1.857rem + 0.714vw, 2.5rem) /* h3 */;
+	--leading-title: clamp(2.4rem, 2.228rem + 0.857vw, 3rem) /* h3 */;
+	--text-subtitle: clamp(2.75rem, 2.684rem + 0.329vw, 3rem) /* h4 */;
+	--text-body: clamp(1.125rem, 1.092rem + 0.164vw, 1.25rem) /* p */;
+	--text-label: clamp(0.875rem, 0.842rem + 0.164vw, 1rem);
+	--text-header-link: clamp(0.875rem, 0.842rem + 0.164vw, 1rem) /* a */;
+	--text-fact: clamp(2.25rem, 1.909rem + 1.705vw, 3rem);
+	--font-fact: var(--clash-grotesk-font);
+
+	--breakpoint-lg: 64.0625rem;
+	--breakpoint-md: 48.0625rem;
+	--breakpoint-sm: 26.625rem;
+	--breakpoint-xs: 23.5rem;
+	--breakpoint-2xs: 20.0625rem;
+}
+
+*,
+*::after,
+*::before {
+	box-sizing: border-box;
+}
+
+* {
+	line-height: calc(1em + 0.5rem);
+	margin: 0;
+	scroll-behavior: smooth;
+}
+
+body {
+	font-family: var(--general-sans-font);
+	font-size: var(--text-body);
+	-webkit-font-smoothing: antialiased;
+	color: var(--color-secondary);
+}
+
+img,
+picture,
+video,
+canvas,
+svg {
+	display: block;
+	max-width: 100%;
+	pointer-events: none;
+	user-select: none;
+}
+
+input,
+button,
+textarea,
+select {
+	font: inherit;
+}
+
+p,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+	overflow-wrap: break-word;
+}
+
+p {
+	font-size: 1.25rem;
+	/* hyphens: auto; */
+	text-wrap: pretty;
+	font-weight: 300 !important;
+	letter-spacing: 0.02rem;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+	font-family: var(--clash-grotesk-font);
+	font-weight: 400;
+	text-wrap: balance;
+}
+
+h1 {
+	font-size: 3.75rem;
+}
+
+h2 {
+	font-size: 3rem;
+}
+
+h3 {
+	font-size: var(--text-title);
+	line-height: var(--leading-title);
+}
+
+strong {
+	font-weight: 500;
+	color: var(--color-primary);
+}
+
+#root,
+#__next {
+	isolation: isolate;
+}
+
+*.before-radial-mask-image::before {
+	content: '';
+	width: 100%;
+	height: 100%;
+	position: absolute;
+	top: 0;
+	left: 0;
+	right: 0;
+	background:
+		radial-gradient(
+			circle at 50% 0%,
+			var(--color-primary) 0%,
+			rgba(0, 170, 226, 0) 100%
+		),
+		url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%0A%3E%3Cdefs%3E%3Cfilter id='grainy'%3E%3CfeTurbulence type='turbulence' baseFrequency='2' /%3E%3CfeComposite operator='in' in2='SourceGraphic' result='monoNoise' /%3E%3C/filter%3E%3C/defs%3E%3Crect width='100%25' height='100%25' filter='url(%23grainy)' /%3E%3C/svg%3E%0A");
+	mask-image: radial-gradient(
+		circle at 50% 0%,
+		rgba(255, 255, 255, 1) 0%,
+		rgba(255, 255, 255, 0) 75%
+	);
+	z-index: 1;
+}
+
+/* Estilo general de la barra de scroll */
+*::-webkit-scrollbar {
+	width: 6px; /* Ancho de la barra */
+}
+
+/* Estilo del track (fondo de la barra de scroll) */
+*::-webkit-scrollbar-track {
+	background: var(--color-primary); /* Color de fondo */
+}
+
+/* Estilo del thumb (barra deslizante) */
+*::-webkit-scrollbar-thumb {
+	background: hsl(216 33% 97% / 0.75); /* Color de la barra */
+	border-radius: 6px;
+}
+
+/* Cambia el color cuando se pasa el mouse sobre la barra */
+*::-webkit-scrollbar-thumb:hover {
+	background: var(--color-background);
+	margin: 10px;
+}
+
+#game-container {
+	margin: auto;
+}
+
+#game-container canvas {
+	margin: auto;
+}
+
+.scroll-text-reveal span {
+	color: hsl(0 0% 23% / 0.2);
+	background-clip: text;
+	-moz-background-clip: text;
+	-webkit-background-clip: text;
+	background-repeat: no-repeat;
+	background-image: linear-gradient(
+		90deg,
+		var(--color-secondary),
+		var(--color-secondary)
+	);
+}
+
+.swiper-pagination-bullet {
+	background: var(--color-background) !important;
+}
+
+.swiper-pagination-bullet-active {
+	background: var(--color-primary) !important;
+}
+
+.animate-pulse-scale {
+	animation: pulseFade 0.8s ease-out forwards;
+}
+
+@keyframes pulseFade {
+	0% {
+		transform: scale(1);
+		opacity: 1;
+	}
+	100% {
+		transform: scale(2);
+		opacity: 0;
+	}
+}
